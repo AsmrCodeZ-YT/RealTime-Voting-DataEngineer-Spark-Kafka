@@ -1,3 +1,6 @@
+from PIL import Image
+from io import BytesIO
+import requests
 import streamlit as st
 import psycopg2
 from kafka import KafkaConsumer
@@ -68,23 +71,30 @@ def update_data():
 
     results = pd.DataFrame(data)
 
+    HOWTOP = 5
     # Identify the leading cnadidate
     results = results.loc[results.groupby(
         "candidate_id")["total_votes"].idxmax()]
-    leading_cnadidate = results.loc[results["total_votes"]].idxmax()
+    results = results.sort_values("total_votes", ascending=False).head(HOWTOP)
 
+    st.header("leading Cnadidate : TOP 5 ")
     st.markdown("""---""")
-    st.header("leading Cnadidate")
-    col1, col2 = st.columns(2)
 
-    with col1:
-        # st.image(leading_cnadidate["photo_url"], width=200)
-        st.subheader(leading_cnadidate["candidate_name"])
-    with col2:
-        st.header(leading_cnadidate["candidate_name"])
-        st.subheader(leading_cnadidate["party_affiliation"])
-        # st.subheader("Total Vote : {}".format(
-        #     leading_cnadidate["total_votes"]))
+    for i in range(HOWTOP):
+        col1, col2 = st.columns(2)
+        with col1:
+            # show images of candidates
+            url = list(results["photo_url"])[i]
+            response = requests.get(url)
+            img = Image.open(BytesIO(response.content))
+            st.image(img, width=200)
+
+        with col2:
+            st.subheader(list(results["candidate_name"])[i])
+            st.header(list(results["party_affiliation"])[i])
+            st.subheader("Total Vote : {}".format(
+                list(results["total_votes"])[2]))
+        st.markdown("""---""")
 
 
 # MIAN
