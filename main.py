@@ -179,7 +179,8 @@ if __name__ == "__main__":
         for i in range(1000):
             voter_data = generate_voter_data()
             inser_voters(conn, cur, voter_data)
-
+            
+            # produce data to kafka
             producer.produce(
                 "voters_topic",
                 key=voter_data["voter_id"],
