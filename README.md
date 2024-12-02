@@ -16,8 +16,8 @@ streamlit-app.py: This script implements the user interface for the voting syste
 
 <div align="center">4
   <kbd>
-    <img src="./Src/1.jpg"/>
-    <img src="./Src/2.jpg"/>
+    <img src="Src\1.jpg"/>
+    <img src="Src\2.jpg"/>
   </kbd>
 </div>
 
@@ -25,8 +25,8 @@ streamlit-app.py: This script implements the user interface for the voting syste
 
 <div align="center">
   <kbd>
-    <img src="./Src/3.png"/>
-    <img src="./Src/4.png"/>
-    <img src="./Src/5.png"/>
+    <img src="Src\3.png"/>
+    <img src="Src\4.png"/>
+    <img src="Src\5.png"/>
   </kbd>
 </div>
