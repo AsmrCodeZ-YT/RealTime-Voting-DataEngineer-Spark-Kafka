@@ -15,8 +15,8 @@ streamlit-app.py: This script implements the user interface for the voting syste
 
 # Screenshots
 
-![2.jpg](src/1.jpg)
-![2.jpg](src/2.jpg)
+![2.jpg](src/system.png)
+![2.jpg](src/project.png)
 
 <!-- 
 <div align="center">
